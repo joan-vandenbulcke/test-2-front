@@ -1,0 +1,105 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.main-title {
+  margin-bottom: 5rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.point {
+  text-align: left;
+}
+
+.points__span {
+  font-weight: bold;
+}
+
+.pointslist {
+  line-height: 2;
+  column-count: 3;
+}
+
+.pointslist__title {
+  margin-bottom: 0;
+}
+
+.pointslist__info {
+  margin: 0 0 2rem;
+}
+
+.player__infos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player__name {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+}
+
+.player__name:focus {
+  outline: 1px solid #646cff;
+}
+
+.player__level {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  outline: none;
+}
+
+.player__level:focus {
+  outline: 1px solid #646cff;
+}
+
+.headerpoints {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.score__button {
+  display: flex;
+  margin: 5rem auto;
+  font-size: 1.5rem;
+  border: 3px solid transparent;
+  transition: border-color 0.25s;
+}
+
+.score__button:hover {
+  border-color: #646cff;
+}
