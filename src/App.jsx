@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 
 const App = () => {
+  const [generatedPoints, setGeneratedPoints] = useState([]);
 
   // Player states declaration
   const [player1Name, setPlayer1Name] = useState('');
@@ -36,6 +37,7 @@ const App = () => {
     let player1Score = 0;
     let player2Score = 0;
 
+    // Loop that creates points dpending on the player level
     for (let i = 0; i < 150; i++) {
       const player1Point = Math.random() * player1Level;
       const player2Point = Math.random() * player2Level;
@@ -52,10 +54,29 @@ const App = () => {
       generatedPoints.push({ pointNumber: i + 1, winner: pointWinner });
     }
 
+    setGeneratedPoints(generatedPoints);
     setPointList(generatedPoints);
     console.log(' -------> SUBMIT : OK ! <-------')
-    console.log(generatedPoints);
   };
+
+  // Async function for the fetch
+  const handleScoreSubmit = async () => {
+
+    const response = await fetch('http://localhost:3000/score', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        pointList: generatedPoints,
+        player1: player1Name,
+        player2: player2Name
+      }),
+    });
+
+    const result = await response.json();
+    console.log('Résultat final :', result);
+  }
 
   return (
     <>
@@ -116,7 +137,12 @@ const App = () => {
             </ul>
           </div>
         )}
-        <button className='score__button'>Otenir le score final !</button>
+        <button
+          className='score__button'
+          onClick={handleScoreSubmit}
+        >
+          Otenir le score final !
+        </button>
       </div>
     </>
   )
